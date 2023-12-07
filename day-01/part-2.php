@@ -9,7 +9,7 @@ $sum = 0;
  * @param string $word The input string containing spelled-out digit words and specific combinations.
  * @return array|string The modified string with digit words and specific combinations replaced by numeric values.
  */
-function replaceSubstringsWithNumbers($word): array|string
+function replaceSubstringsWithNumbers(string $word): array|string
 {
     $replacements = [
         'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'
@@ -45,13 +45,18 @@ function replaceSubstringsWithNumbers($word): array|string
  * @param string $word The string to be scanned for the first numeric digit.
  * @return string|null The first numeric digit found in the string, or null if no digit is found.
  */
-function getFirstNum($word): ?string
+function getFirstNum(string $word): ?string
 {
     return preg_match('/\d/', $word, $match) ? $match[0] : null;
 }
 
-
-function getLastNum($word): ?string
+/**
+ * Retrieves the last numeric digit found in a given string.
+ *
+ * @param string $word The string to be scanned for the last numeric digit.
+ * @return string|null The last numeric digit found in the string, or null if no digit is found.
+ */
+function getLastNum(string $word): ?string
 {
     if (preg_match('/\d(?!.*\d)/', $word, $match)) {
         return $match[0];
